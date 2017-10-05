@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	audio = new Audio();
 	audio.addEventListener('canplaythrough', canPlayHandler);
 	audio.loop = true;
-	audio.autoplay = true;
 	audio.src = loituma_ogg;
 });
 
