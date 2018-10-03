@@ -2,8 +2,7 @@
 
 HTML5 version of the flash-based leekspin.com
 
-* Author: Sven Neumann
-* Source: https://codepen.io/killroy/pen/RWjmpG
+- Author: Sven Neumann
+- Source: https://codepen.io/killroy/pen/RWjmpG
 
-Hosted at http://leekspins.com.
-
+Hosted at https://leekspin.surge.sh/.
