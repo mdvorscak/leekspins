@@ -43,10 +43,42 @@ function showPlayButton() {
   document.body.style.backgroundImage = "url(" + frames[0].src + ")";
   window.addEventListener("click", tryPlayback, true);
 }
+
+function createTimerDiv() {
+  const timerDiv = document.createElement("div");
+  timerDiv.setAttribute("id", "timer")
+  timerDiv.setAttribute(
+      "style",
+      "font:1rem arial;" +
+      "font-weight: bold;" +
+      "color: #fff;" +
+      "position: fixed; " +
+      "text-align: center; " +
+      "padding: 5px;" +
+      "bottom: 2rem; " +
+      "left: 50%; " +
+      "transform: translateX(-50%);" +
+      "background-color: black;")
+
+  document.body.appendChild(timerDiv);
+  spinningFor()
+}
+
+function spinningFor() {
+  const elapsedMillis = window.startTime ? (Date.now() - window.startTime) : 0
+  let hours = Math.floor(elapsedMillis / 3600000);
+  let minutes = Math.floor((elapsedMillis - (hours * 3600000)) / 60000);
+  let seconds = Math.floor((elapsedMillis - (hours * 3600000) - (minutes * 60000)) / 1000);
+  document.getElementById("timer").innerHTML = `You've been spinning for ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+}
+
 function startPlayback() {
+  window.startTime = Date.now()
   window.addEventListener("click", muteHandler, true);
   document.body.innerHTML = "";
+  createTimerDiv()
   audio.play();
+  setInterval(spinningFor, 1000);
   var frame = 0;
   setInterval(function() {
     document.body.style.backgroundImage = "url(" + frames[frame].src + ")";
